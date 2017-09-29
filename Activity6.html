@@ -1,0 +1,25 @@
+<title>XKCD</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+
+<p>Current comic</p>
+<img id="comic-image" src="" />
+<div id="comic">No comic</div>
+
+<script>
+
+  var myurl= "http://dynamic.xkcd.com/api-0/jsonp/comic?callback=?";
+  console.log(myurl);
+  $.ajax({
+    url : myurl,
+    crossDomain: true,
+    dataType : "json",
+    success : function(parsed_json) {
+      console.log(parsed_json);
+      $("#comic-image").attr("src", parsed_json["img"])
+      $("#comic").html(JSON.stringify(parsed_json["alt"]));
+    }
+  });
+</script>

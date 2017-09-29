@@ -1,0 +1,31 @@
+<html>
+<head>
+<script>
+var cities = ["Alpine","Altamont", "Ogden"];
+var mfunc = function(){
+	var part = document.getElementById("partial").value
+  console.log("Partial = "+part);
+  var inner = "<ul>"
+  for(i=0; i<cities.length; i++){
+  	if(cities[i].startsWith(part)){
+    	inner += "<li>" + cities[i] + "</li>"
+    }
+  }
+  inner += "</ul>"
+  console.log(inner);
+  var suggest = document.getElementById("suggestions");
+  suggest.innerHTML=inner
+}
+</script>
+</head>
+<body>
+<h1>Utah Cities</h1>
+Enter City: <input type="text" id="partial"onkeyup="mfunc()">
+
+<p></p>
+<div id="suggestions">
+Suggested Cities
+</div>
+
+</body>
+</html>
