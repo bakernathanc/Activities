@@ -1,10 +1,4 @@
 angular.module('News', [])
-.factory('postFactory', [function(){
-    var o = {
-      posts: []
-    };
-    return o;
-  }])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
@@ -22,6 +16,12 @@ angular.module('News', [])
         });
       $urlRouterProvider.otherwise('home');
   }])
+  .factory('postFactory', [function(){
+      var o = {
+        posts: []
+      };
+      return o;
+  }])
   .controller('MainCtrl', [
   '$scope',
   'postFactory',
@@ -29,6 +29,7 @@ angular.module('News', [])
       $scope.posts = postFactory.posts;
 
       $scope.addPost = function() {
+        if($scope.formContent === '') { return; }
         $scope.posts.push({
           title:$scope.formContent,
           upvotes:0,
@@ -42,8 +43,7 @@ angular.module('News', [])
       $scope.incrementDownvotes = function(post) {
         post.upvotes -= 1;
       };
-    }
-  ])
+    }])
   .controller('PostCtrl', [
     '$scope',
     '$stateParams',

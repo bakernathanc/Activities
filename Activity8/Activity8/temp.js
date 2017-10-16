@@ -37,8 +37,7 @@ function($scope, postFactory){
     $scope.posts.push({
       title: $scope.formContent,
       upvotes: 0,
-      comments: [
-      ]
+      comments: []
     });
     $scope.formContent = '';
   };
